@@ -23,8 +23,8 @@ class Tree(val path: String, val sc: SparkContext){
     val strRDD = sc.textFile(path)
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
     val jsonDf = sqlContext.jsonRDD(strRDD)
-    jsonDf.printSchema()
-    jsonDf.show()
+//    jsonDf.printSchema()
+//    jsonDf.show()
 
     import sqlContext.implicits._
 
@@ -62,11 +62,8 @@ class Tree(val path: String, val sc: SparkContext){
     // var verticesArray = completeParentTupleArray.union(childTupleArray).distinct
     // var verticesArray = parentTupleArray.union(childTupleArray).distinct
 
-
     // convert to RDD
     val verticesRdd: RDD[(VertexId, String)] = sc.parallelize(verticesArray)
-
-
 
     // edges RDD
     var allEdges = jsonDf.select($"child", $"parent").distinct.rdd.map(r => 
@@ -96,9 +93,7 @@ class Tree(val path: String, val sc: SparkContext){
     // jsonDf.groupBy("child").agg(count("parent") > 1).collect.foreach(println)
 
     var edgesArray = edgeArray.union(orphantTupleArray).distinct
-
     val edgeRdd: RDD[Edge[String]] = sc.parallelize(edgeArray)
-
     val graph = Graph(verticesRdd, edgeRdd)
 
     return graph

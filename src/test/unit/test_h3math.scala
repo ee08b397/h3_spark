@@ -11,7 +11,7 @@ import org.scalatest.BeforeAndAfter
 import h3.h3math._
 
 @RunWith(classOf[JUnitRunner])
-class h3math_test extends FunSuite with BeforeAndAfter {
+class test_h3math extends FunSuite with BeforeAndAfter {
   
   test("test matrix multiplication ") {
     val A : Matrix = List(
