@@ -43,4 +43,8 @@ class Point4d(val xc: Double = 0.0, val yc: Double = 0.0, val zc:
         z = target(0)(2)
         w = target(0)(3)
     }
+    
+    def to_string(): String = {
+        return s"[$x, $y, $z, $w]"
+    }
 }

@@ -17,7 +17,7 @@ if __name__ == '__main__':
             format="%(asctime)-10s \
                     %(levelname)-6s %(message)s")
     log = logging.getLogger()
-    edges = igraph.Graph.Barabasi(n=50, m=3, directed=True).spanning_tree(None, True).get_edgelist()
+    edges = igraph.Graph.Barabasi(n=1000, m=100, directed=True).spanning_tree(None, True).get_edgelist()
 
     referrer_list = ["t.co", "twitter.com", "twitterrific.com", "www.buzzfeed.com", \
             "m.facebook.com", "www.facebook.com", "null"]
